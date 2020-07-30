@@ -1,0 +1,93 @@
+/* GENERAL STYLING */
+
+* {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+  background-image: linear-gradient(90deg, red, blue); 
+}
+
+h1 {
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* MAIN PAGE */
+
+.homeRoute {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.masterList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.masterList li {
+  border: 2px dotted black;
+  margin: 1rem;
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 4px 4px black;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 2rem;
+}
+
+.link:hover {
+  color: blue;
+  text-shadow: red 2px 2px;
+}
+
+/* INDIVIDUAL POKEMON PAGES */
+
+.baseInfo {
+  margin-left: 1rem;
+}
+
+.pokeInd {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokeIndStats {
+  border: 2px dotted black;
+  padding: 2rem;
+  background-color: white;
+}
+
+.deetsBtn {
+  border: 2px dotted black;
+  background-color: white;
+  padding: .4rem;
+  margin: 1rem;
+}
+
+.deetsBtn:hover {
+  background-color: red;
+  box-shadow: 3px 3px blue;
+}
+
+/* INDIVIDUAL INFO PAGES OF POKEMON */
+
+.PokeInfo{
+  display: flex;
+  justify-content: center;
+}
