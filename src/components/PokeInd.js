@@ -9,6 +9,7 @@ export const PokeInd = ({pokemon}) => {
     }).map((pokeInd)=> {
         return pokeInd;
     });
+    // let pokePic = 
 
     return (
         <div className="pokeInd">
@@ -17,7 +18,9 @@ export const PokeInd = ({pokemon}) => {
                 
                   {pokeDeets.map(pokeInd => (
                     <div key={pokeInd.id} className="pokeIndStats">
-                    <h3 >{pokeInd.name.english}</h3>
+                    <h3 >{pokeInd.name.english} <br/> #{pokeInd.id}</h3>
+                    <img className="pokePic" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeInd.id}.png`} alt={`${pokeInd.name.english}`}/>
+
                     <div>
                         <div>Type: {pokeInd.type.map(type => (
                             <div className="baseInfo">{type}</div>

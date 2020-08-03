@@ -47,11 +47,17 @@ ul {
   text-decoration: none;
   font-size: 1.5rem;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .link:hover {
   color: blue;
   text-shadow: red 2px 2px;
+}
+
+.pokePic {
 }
 
 /* INDIVIDUAL POKEMON PAGES */
@@ -91,3 +97,4 @@ ul {
   display: flex;
   justify-content: center;
 }
+

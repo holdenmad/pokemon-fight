@@ -9,6 +9,7 @@ import './App.css';
 function App() {
   //Reconfigure this for Pokemon
   const [pokemon, setPokemon] = useState([]);
+  // const [pokePic, setPokePic] = useState([]);
 
 	useEffect(() => {
 		const fetchPokemon = async () => {
@@ -19,7 +20,14 @@ function App() {
       
 		};
 		fetchPokemon().then(res => setPokemon(res));
-	}, []);
+  }, []);
+  
+  // useEffect(() => {
+  //   const fetchPic = async()=> {
+  //     const pokePic = await axios
+  //     .get('')
+  //   }
+  // })
 
   return (
     <div className="App">
@@ -33,7 +41,12 @@ function App() {
               <div className="masterList">
                 <ul>
                   {pokemon.map(pokeInd => (
-                    <li key={pokeInd.id}><Link className="link" to={`/${pokeInd.id}`}>{pokeInd.id}: {pokeInd.name.english}</Link></li>
+                    <div>
+                    <li key={pokeInd.id}><Link className="link" to={`/${pokeInd.id}`}>
+                      <img className="pokePic" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeInd.id}.png`} alt={`${pokeInd.name.english}`}/>
+                      {pokeInd.id}: {pokeInd.name.english}</Link>
+                    </li>
+                    </div>
                   ))}
                 </ul>
               </div>
