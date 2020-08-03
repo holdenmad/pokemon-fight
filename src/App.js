@@ -13,7 +13,7 @@ function App() {
 	useEffect(() => {
 		const fetchPokemon = async () => {
 			const pokemon = await axios
-        .get('http://localhost:5000/pokemon') //how do I put the api in? 
+        .get('https://poke-api-holden.herokuapp.com/pokemon') //how do I put the api in? 
         .then(result => result.data)
       return pokemon;
       
@@ -33,15 +33,15 @@ function App() {
               <div className="masterList">
                 <ul>
                   {pokemon.map(pokeInd => (
-                    <li key={pokeInd.id}><Link className="link" to={`/pokemon-${pokeInd.id}`}>{pokeInd.id}: {pokeInd.name.english}</Link></li>
+                    <li key={pokeInd.id}><Link className="link" to={`/${pokeInd.id}`}>{pokeInd.id}: {pokeInd.name.english}</Link></li>
                   ))}
                 </ul>
               </div>
             </Route>
-						<Route exact path="/pokemon-:id">
+						<Route exact path="/:id">
 							<PokeInd pokemon={pokemon} />
 						</Route>
-						<Route exact path="/pokemon-:id/info">
+						<Route exact path="/:id/info">
 							<PokeInfo pokemon={pokemon} />
 						</Route>
 			</Switch>
