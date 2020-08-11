@@ -2,19 +2,28 @@ import React, {useEffect, useState} from 'react';
 import {Link, Route, Switch} from "react-router-dom"
 import PokeInd from './components/PokeInd'
 import PokeInfo from './components/PokeInfo'
+import PokeFight from './components/PokeFight'
+import Party from './components/Party'
+import About from './components/About'
+import { Anchor, Box, Header, Nav, Text } from 'grommet';
+
+import HeaderNav from './components/HeaderNav'
+import FrontPage from './components/FrontPage'
+
 import axios from 'axios'
 import './App.css';
 
 
-function App() {
-  //Reconfigure this for Pokemon
+
+
+
+function App({openNotification, handleAdd}) {
   const [pokemon, setPokemon] = useState([]);
-  // const [pokePic, setPokePic] = useState([]);
 
 	useEffect(() => {
 		const fetchPokemon = async () => {
 			const pokemon = await axios
-        .get('https://poke-api-holden.herokuapp.com/pokemon') //how do I put the api in? 
+        .get('https://poke-api-holden.herokuapp.com/pokemon')
         .then(result => result.data)
       return pokemon;
       
@@ -22,46 +31,38 @@ function App() {
 		fetchPokemon().then(res => setPokemon(res));
   }, []);
   
-  // useEffect(() => {
-  //   const fetchPic = async()=> {
-  //     const pokePic = await axios
-  //     .get('')
-  //   }
-  // })
-
+  
   return (
-    <div className="App">
-      <h1>Pokemon Fight!</h1>
+    <Box background="linear-gradient(#ffffff, #18BAB9 )" className="App">
+      <HeaderNav/>
 
-{/* // ROUTER // */}
-<div className="Router">
-      <Switch>
-						<Route exact path="/">
-            <div className="homeRoute">Here is a list of all the Pokemon in the fucking universe!</div>
-              <div className="masterList">
-                <ul>
-                  {pokemon.map(pokeInd => (
-                    <div>
-                    <li key={pokeInd.id}><Link className="link" to={`/${pokeInd.id}`}>
-                      <img className="pokePic" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeInd.id}.png`} alt={`${pokeInd.name.english}`}/>
-                      {pokeInd.id}: {pokeInd.name.english}</Link>
-                    </li>
-                    </div>
-                  ))}
-                </ul>
-              </div>
-            </Route>
-						<Route exact path="/:id">
-							<PokeInd pokemon={pokemon} />
-						</Route>
-						<Route exact path="/:id/info">
-							<PokeInfo pokemon={pokemon} />
-						</Route>
-			</Switch>
+    {/* // ROUTER // */}
+    <div className="Router">
+          <Switch>
+                <Route exact path="/">
+                  <FrontPage pokemon={pokemon} openNotification={openNotification}/>
+                </Route>
+                <Route exact path="/battle">
+                  <PokeFight pokemon={pokemon}/>
+                </Route>
+                <Route exact path="/party">
+                  <Party pokemon={pokemon} handleAdd={handleAdd}/>
+                </Route>
+                <Route exact path="/about">
+                  <About/>
+                </Route>
+                <Route exact path="/:id">
+                  <PokeInd pokemon={pokemon} />
+                </Route>
+                <Route exact path="/:id/info">
+                  <PokeInfo pokemon={pokemon} />
+                </Route>
 
-</div>
-      
+          </Switch>
+
     </div>
+      
+    </Box>
   );
 }
 
